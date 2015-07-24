@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/spiralBug" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ZBug" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DancingBug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Jumper" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
