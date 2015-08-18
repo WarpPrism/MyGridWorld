@@ -11,6 +11,18 @@
       <sourceFolder url="file://$MODULE_DIR$/ZBug" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DancingBug" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Jumper" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/circleBug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/DancingBug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Jumper" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/spiralBug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/ZBug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/given/boxBug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/given/critters" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/given/firstProject" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part4.1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part4.2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part4.3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part4.4" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
