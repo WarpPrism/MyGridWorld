@@ -13,8 +13,9 @@ public class BlusterCritter extends Critter {
     private int courage;
 
     public BlusterCritter() {}
-    public BlusterCritter(int c) {
+    public BlusterCritter(int c, Color color) {
         this.courage = c;
+        this.setColor(color);
     }
 
     @Override
@@ -42,11 +43,11 @@ public class BlusterCritter extends Critter {
                 }
             }
         }
-        System.out.println(count);
+        //System.out.println(count);
         return actors;
     }
 
-   /* @Override
+    @Override
     public void processActors(ArrayList<Actor> actors) {
         int n = actors.size();
         if (n >= courage) {
@@ -54,15 +55,21 @@ public class BlusterCritter extends Critter {
             Color c = this.getColor();
             int red = (int)((double)c.getRed() * 0.95D);
             int blue = (int)((double)c.getBlue() * 0.95D);
-            int green = (int)((double)c.getGreen() * 0.95D);
+            int green = (int)((double)c.getGreen() * 0.8D);
+            if (red < 0) red = 0;
+            if (green < 0) green = 0;
+            if (blue < 0) blue = 0;
             this.setColor(new Color(red, green, blue));
         } else if (n < courage) {
             // The color gets brighten
             Color c = this.getColor();
-            int red = (int)((double)c.getRed() * 1.05D);
-            int blue = (int)((double)c.getBlue() * 1.05D);
-            int green = (int)((double)c.getGreen() * 1.05D);
+            int red = (int)((double)c.getRed() + 10);
+            int blue = (int)((double)c.getBlue() + 10);
+            int green = (int)((double)c.getGreen() + 15);
+            if (red > 255) red = 255;
+            if (green > 255) green = 255;
+            if (blue > 255) blue = 255;
             this.setColor(new Color(red, green, blue));
         }
-    }*/
+    }
 }

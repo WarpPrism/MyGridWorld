@@ -1,6 +1,8 @@
+import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Bug;
 import info.gridworld.actor.Rock;
+import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
 import java.awt.*;
@@ -11,15 +13,12 @@ import java.awt.*;
 public class JumperRunner {
     public static void main(String args[]) {
         ActorWorld world = new ActorWorld();
-        Jumper jumper1 = new Jumper(Color.BLACK);
-        Jumper jumper2 = new Jumper(Color.RED);
-        Jumper jumper3 = new Jumper(Color.YELLOW);
+        Jumper jumper1 = new Jumper(Color.black);
         Rock rock = new Rock();
-
-        world.add(new Location(5, 5),jumper1);
-        world.add(new Location(4, 0), jumper2);
-        world.add(new Location(6, 0), jumper3);
-        world.add(new Location(5, 0), rock);
+        Bug bug = new Bug();
+        world.add(new Location(7, 5),jumper1);
+        world.add(new Location(6, 5), rock);
+        world.add(new Location(3, 3), bug);
 
         world.show();
     }

@@ -23,6 +23,12 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part2/DancingBug" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part2/spiralBug" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part2/ZBug" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part4/Part4.5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part4/Part4.6" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part5/Part5.1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part5/Part5.2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part5/Part5.3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part3/Jumper" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -30,6 +36,15 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../gridworld.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../junit-4.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

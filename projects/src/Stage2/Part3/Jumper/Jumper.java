@@ -30,11 +30,7 @@ public class Jumper extends Actor {
         } else {
             nowLoc = this.getLocation();
             next1 = nowLoc.getAdjacentLocation(getDirection());
-            if (!grid.isValid(next1)) {
-                return false;
-            } else {
-                return true;
-            }
+            return grid.isValid(next1);
         }
     }
 
@@ -42,44 +38,29 @@ public class Jumper extends Actor {
         Grid grid = this.getGrid();
         nowLoc = this.getLocation();
         next1 = nowLoc.getAdjacentLocation(getDirection());
-        next2 = next1.getAdjacentLocation(getDirection());
+        // next1 is not valid
+        if (!grid.isValid(next1)) {
+            turn();
+            return;
+        }
         Actor next1obj = (Actor)grid.get(next1);
-        // next2 is out of grid, move one step
-        if (!grid.isValid(next2) && next1obj == null) {
+
+        next2 = next1.getAdjacentLocation(getDirection());
+        // next1 is valid, but next2 is not valid.
+        if (!grid.isValid((next2)) && next1obj == null) {
             this.moveTo(next1);
             return;
         }
-
-        if (!grid.isValid(next2) && next1obj != null) {
+        if (!grid.isValid((next2)) && next1obj != null) {
             turn();
             return;
         }
         Actor next2obj = (Actor)grid.get(next2);
-
-        // next2obj is flower or rock, move one step
-        if (next2obj instanceof Flower || next2obj instanceof Rock) {
-            this.moveTo(next1);
-            return;
-        }
-        // next2obj is Bug, wait
-        if (next2obj instanceof Bug) {
-            turn();
-            return;
-        }
-        // next2obj is Jumper
-        if (next2obj instanceof Jumper && next1obj == null) {
-            this.moveTo(next1);
-            return;
-        }
-
-        // jump over flower and rock
-        if (next1obj instanceof  Flower || next1obj instanceof Rock) {
-            this.moveTo(next2);
-            return;
-        }
-
+        // next1 and next2 are both valid.
         if (next2obj == null) {
             this.moveTo(next2);
+        } else if (next1obj == null){
+            this.moveTo(next1);
         } else {
             turn();
         }
