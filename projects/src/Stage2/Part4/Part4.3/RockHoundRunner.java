@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by zhoujihao on 15-8-18.
  */
 public class RockHoundRunner {
-    public static  void main(String[] args) {
+    public static void main(String[] args) {
         ActorWorld world = new ActorWorld();
         world.add(new Location(7, 8), new Rock());
         world.add(new Location(3, 3), new Rock());

@@ -9,6 +9,16 @@ import java.util.ArrayList;
 /**
  * Created by zhoujihao on 15-8-18.
  */
+/*
+Create a class BlusterCritter that extends Critter. A BlusterCritter
+looks at all of the neighbors within two steps of its current location.
+(For a BlusterCritter not near an edge, this includes 24 locations).
+It counts the number of critters in those locations. If there are fewer
+than c critters, the BlusterCritter's color gets brighter (color values increase).
+If there are c or more critters, the BlusterCritter's color darkens (color values decrease).
+ Here, c is a value that indicates the courage of the critter. It should be set
+ in the constructor.
+*/
 public class BlusterCritter extends Critter {
     private int courage;
 
@@ -43,7 +53,6 @@ public class BlusterCritter extends Critter {
                 }
             }
         }
-        //System.out.println(count);
         return actors;
     }
 
@@ -53,22 +62,36 @@ public class BlusterCritter extends Critter {
         if (n >= courage) {
             // The color gets darken
             Color c = this.getColor();
-            int red = (int)((double)c.getRed() * 0.95D);
-            int blue = (int)((double)c.getBlue() * 0.95D);
-            int green = (int)((double)c.getGreen() * 0.8D);
-            if (red < 0) red = 0;
-            if (green < 0) green = 0;
-            if (blue < 0) blue = 0;
+            double factor1 = 0.95D;
+            int red = (int)((double)c.getRed() * factor1);
+            int blue = (int)((double)c.getBlue() * factor1);
+            int green = (int)((double)c.getGreen() * factor1);
+            if (red < 0) {
+                red = 0;
+            }
+            if (green < 0) {
+                green = 0;
+            }
+            if (blue < 0) {
+                blue = 0;
+            }
             this.setColor(new Color(red, green, blue));
         } else if (n < courage) {
             // The color gets brighten
             Color c = this.getColor();
-            int red = (int)((double)c.getRed() + 10);
-            int blue = (int)((double)c.getBlue() + 10);
-            int green = (int)((double)c.getGreen() + 15);
-            if (red > 255) red = 255;
-            if (green > 255) green = 255;
-            if (blue > 255) blue = 255;
+            int factor2 = 15;
+            int red = (int)((double)c.getRed() + factor2);
+            int blue = (int)((double)c.getBlue() + factor2);
+            int green = (int)((double)c.getGreen() + factor2);
+            if (red > 255) {
+                red = 255;
+            }
+            if (green > 255) {
+                green = 255;
+            }
+            if (blue > 255) {
+                blue = 255;
+            }
             this.setColor(new Color(red, green, blue));
         }
     }

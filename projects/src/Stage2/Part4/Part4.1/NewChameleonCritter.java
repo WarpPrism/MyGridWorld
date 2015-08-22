@@ -8,6 +8,12 @@ import java.util.ArrayList;
 /**
  * Created by zhoujihao on 15-8-18.
  */
+
+/*
+Modify the processActors method in ChameleonCritter so that
+if the list of actors to process is empty,the color of the
+ChameleonCritter will darken (like a flower).
+*/
 public class NewChameleonCritter extends Critter {
     @Override
     public void processActors(ArrayList<Actor> actors) {
@@ -15,11 +21,11 @@ public class NewChameleonCritter extends Critter {
         if (n == 0) {
             // The color gets darken
             Color c = this.getColor();
-            int red = (int)((double)c.getRed() * 0.95D);
-            int blue = (int)((double)c.getBlue() * 0.95D);
-            int green = (int)((double)c.getGreen() * 0.95D);
+            double factor = 0.95D;
+            int red = (int)((double)c.getRed() * factor);
+            int blue = (int)((double)c.getBlue() * factor);
+            int green = (int)((double)c.getGreen() * factor);
             this.setColor(new Color(red, green, blue));
-            return;
         } else {
             int r = (int)(Math.random() * n);
             Actor other = actors.get(r);

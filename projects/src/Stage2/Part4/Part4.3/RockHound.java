@@ -8,19 +8,20 @@ import java.util.Iterator;
 /**
  * Created by zhoujihao on 15-8-18.
  */
+/*
+Create a class called RockHound that extends Critter. A RockHound
+ gets the actors to be processed in the same way as a Critter. It
+  removes any rocks in that list from the grid. A RockHound moves
+  like a Critter.
+*/
 public class RockHound extends Critter {
     @Override
     public void processActors(ArrayList<Actor> actors) {
-        int n = actors.size();
-        if (n == 0) {
-            return;
-        } else {
-            Iterator i$ = actors.iterator();
-            while (i$.hasNext()) {
-                Actor a = (Actor)i$.next();
-                if (a instanceof Rock) {
-                    a.removeSelfFromGrid();
-                }
+        Iterator i = actors.iterator();
+        while (i.hasNext()) {
+            Actor a = (Actor)i.next();
+            if (a instanceof Rock) {
+                a.removeSelfFromGrid();
             }
         }
     }
