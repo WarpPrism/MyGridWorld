@@ -8,10 +8,28 @@ import java.util.LinkedList;
 /**
  * Created by zhoujihao on 15-8-20.
  */
+/*
+Suppose that a program requires a very large bounded grid that contains very
+few objects and that the program frequently calls the getOccupiedLocations method
+ (as, for example, ActorWorld). Create a class SparseBoundedGrid that uses a
+ sparse array implementation. Your solution need not be a generic class;
+ you may simply store occupants of type Object.
+*/
+
+/*
+The "sparse array" is an array list of linked lists.
+Each linked list entry holds both a grid occupant and a column index.
+ Each entry in the array list is a linked list or is null if that row is empty.
+*/
+/*For a grid with r rows and c columns, the sparse array has length r. Each of the linked lists has maximum length c.
+Implement the methods specified by the Grid interface using this data structure.
+Why is this a more time-efficient implementation than BoundedGrid?
+The World has a public addGridClass method. Since the ActorWorld is a World,
+you can call this method in a runner. Here is the code to add a new grid to the GUI.*/
 public class SparseBoundedGrid extends AbstractGrid {
     private LinkedList<OccupantInCol>[] listArray;
-    private int Rows;
-    private int Columns;
+    private int rRows;
+    private int cColumns;
 
     public SparseBoundedGrid(int rows, int cols) {
         if (rows <= 0) {
@@ -20,17 +38,17 @@ public class SparseBoundedGrid extends AbstractGrid {
         if (cols <= 0) {
             throw new IllegalArgumentException("cols <= 0");
         }
-        this.Rows = rows;
-        this.Columns = cols;
+        this.rRows = rows;
+        this.cColumns = cols;
         this.listArray = new LinkedList[rows];
     }
 
     public int getNumRows() {
-        return Rows;
+        return rRows;
     }
 
     public int getNumCols() {
-        return Columns;
+        return cColumns;
     }
 
     public boolean isValid(Location loc) {

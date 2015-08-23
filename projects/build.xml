@@ -4,21 +4,21 @@ Then package the .class files to package.jar in ${lib}. Finally run the package.
 2015-08-19 ZhouJihao-->
 <project name="ProjectName" default="run" basedir=".">
 
-	<property name="base" value="${basedir}"></property>
-	<property name="classes" value="${base}/classes"></property>
-	<property name="lib" value="${base}/lib"></property>
-	<property name="outputjar" value="${base}/lib/package.jar"></property>
+	<property name="base" value="${basedir}"/>
+	<property name="classes" value="${base}/classes"/>
+	<property name="lib" value="${base}/lib"/>
+	<property name="outputjar" value="${base}/lib/package.jar"/>
 	
 	<!-- ****************************************************************** -->
 	<property name="MAINCLASS" value="mainclass"/>
-	<property name="src" value="${base}/SRC"></property>
+	<property name="src" value="${base}/SRC"/>
 	<path id="gridworld">
 		<pathelement location="/home/zhoujihao/Desktop/MyGridWorld/gridworld.jar"/>
 	</path>
 	<!-- ****************************************************************** -->
 	<target name="init" depends="clean">
-		<mkdir dir="${classes}"></mkdir>
-		<mkdir dir="${lib}"></mkdir>
+		<mkdir dir="${classes}"/>
+		<mkdir dir="${lib}"/>
 	</target>
 
 	<target name="compile" depends="init">

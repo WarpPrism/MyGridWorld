@@ -7,11 +7,15 @@ import java.util.*;
  * Created by zhoujihao on 15-8-20.
  */
 // Use HashMap to implement the SparseBoundedGrid
-
+/*
+Consider using a HashMap or TreeMap to implement the SparseBoundedGrid.
+How could you use the UnboundedGrid class to accomplish this task?
+Which methods of UnboundedGrid could be used without change?
+*/
 public class SparseBoundedGrid2 extends AbstractGrid {
     private HashMap<Location, Object> occupantMap;
-    private int Rows;
-    private int Columns;
+    private int rRows;
+    private int cColumns;
 
     public SparseBoundedGrid2(int rows, int cols) {
         if (rows <= 0) {
@@ -20,17 +24,17 @@ public class SparseBoundedGrid2 extends AbstractGrid {
         if (cols <= 0) {
             throw new IllegalArgumentException("cols <= 0");
         }
-        this.Rows = rows;
-        this.Columns = cols;
+        this.rRows = rows;
+        this.cColumns = cols;
         this.occupantMap = new HashMap<>();
     }
 
     public int getNumRows() {
-        return Rows;
+        return rRows;
     }
 
     public int getNumCols() {
-        return Columns;
+        return cColumns;
     }
 
     public boolean isValid(Location loc) {
