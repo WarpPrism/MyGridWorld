@@ -43,7 +43,7 @@ public class SparseBoundedGrid2 extends AbstractGrid {
 
     public ArrayList<Location> getOccupiedLocations() {
         ArrayList<Location> theLocations = new ArrayList<>();
-
+        // get all the keys: Location.
         Set keyset = occupantMap.keySet();
         for (Object obj : keyset) {
             Location loc = (Location)obj;

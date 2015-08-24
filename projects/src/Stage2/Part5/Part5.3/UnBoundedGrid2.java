@@ -1,4 +1,5 @@
 // Created By ZhouJihao
+// Modified on 2015 8 24.
 
 import info.gridworld.grid.AbstractGrid;
 import info.gridworld.grid.Location;
@@ -15,6 +16,7 @@ public class UnBoundedGrid2<E> extends AbstractGrid<E> {
     private int gridsize;
 
     public UnBoundedGrid2() {
+        // Initial Size 16.
         gridsize = 16;
         occupantArray = new Object[gridsize][gridsize];
     }
@@ -28,7 +30,11 @@ public class UnBoundedGrid2<E> extends AbstractGrid<E> {
     }
 
     public boolean isValid(Location loc) {
-        return true;
+        int row = loc.getRow();
+        int col = loc.getCol();
+        // if row < 0 or col < 0 return false.
+        // Because index out of bound.
+        return row >= 0 && col >= 0;
     }
 
     public ArrayList<Location> getOccupiedLocations() {
@@ -53,7 +59,7 @@ public class UnBoundedGrid2<E> extends AbstractGrid<E> {
                 eobj = (E)this.occupantArray[loc.getRow()][loc.getCol()];
             } catch (Exception e) {
                 // Do Nothing will ignore unimportant Exception.
-                return eobj;
+                ;
             }
             return eobj;
         }
@@ -71,18 +77,30 @@ public class UnBoundedGrid2<E> extends AbstractGrid<E> {
             if (row < gridsize && col < gridsize) {
                 try {
                     this.occupantArray[row][col] = obj;
+                    return old;
                 } catch (Exception e) {
                     System.out.println("Row or Col of the location should not be negative.");
+                    return old;
                 }
-            } else if (row >= gridsize || col >= gridsize) {
-                gridsize *= 2;
+            } else {
+                while (row >= gridsize || col >= gridsize) {
+                    // gradually increase the grid size.
+                    gridsize *= 2;
+                    // create new object[][]
+                }
                 Object[][] temp = new Object[gridsize][gridsize];
                 ArrayList<Location> locs = this.getOccupiedLocations();
                 for (Location l : locs) {
                     temp[l.getRow()][l.getCol()] = occupantArray[l.getRow()][l.getCol()];
                 }
                 this.occupantArray = temp;
+                System.out.println(occupantArray[0].length);
+            }
+            try {
                 this.occupantArray[row][col] = obj;
+            } catch (Exception e) {
+                // Do Nothing in order to handle unimportant Exception.
+                ;
             }
             return old;
         }

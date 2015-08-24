@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--Compile all .java files in ${src} and put the .class files to ${classes}
+Then package the .class files to package.jar in ${lib}. Finally run the package.jar
+2015-08-19 ZhouJihao-->
+<project name="ProjectName" default="run" basedir=".">
+
+	<property name="base" value="${basedir}"/>
+	<property name="classes" value="${base}/classes"/>
+	<property name="lib" value="${base}/lib"/>
+	<property name="outputjar" value="${base}/lib/package.jar"/>
+	
+	<!-- ****************************************************************** -->
+	<property name="MAINCLASS" value="mainclass"/>
+	<property name="src" value="${base}/SRC"/>
+	<path id="gridworld">
+		<pathelement location="/home/zhoujihao/Desktop/MyGridWorld/gridworld.jar"/>
+	</path>
+	<!-- ****************************************************************** -->
+	<target name="init" depends="clean">
+		<mkdir dir="${classes}"/>
+		<mkdir dir="${lib}"/>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${classes}"><classpath refid="gridworld"/></javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${outputjar}">
+			<fileset dir="${classes}"/>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Main-Class" value="${MAINCLASS}"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="run" depends="jar">
+		<java classname="${MAINCLASS}" fork="true">
+			<classpath>
+        		<fileset dir="${lib}">
+        			<include name="package.jar"/>
+        		</fileset>
+    		</classpath>
+
+    		<classpath refid="gridworld"/>
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${classes}"/>
+		<delete dir="${lib}"/>
+	</target>
+</project>

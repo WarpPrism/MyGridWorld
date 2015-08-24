@@ -29,6 +29,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part5/Part5.2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part5/Part5.3" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Stage2/Part3/Jumper" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Stage3/MazeBug" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -12,7 +12,7 @@ import java.util.LinkedList;
 Suppose that a program requires a very large bounded grid that contains very
 few objects and that the program frequently calls the getOccupiedLocations method
  (as, for example, ActorWorld). Create a class SparseBoundedGrid that uses a
- sparse array implementation. Your solution need not be a generic class;
+ sparse array implementation. Your solution need not be a generic class.
  you may simply store occupants of type Object.
 */
 
