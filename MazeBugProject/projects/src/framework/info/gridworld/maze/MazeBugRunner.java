@@ -4,6 +4,8 @@ import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
 import info.gridworld.grid.UnboundedGrid;
 import info.gridworld.actor.Rock;
+import info.gridworld.maze.MazeBug;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,27 +19,18 @@ public class MazeBugRunner
 {
     public static void main(String[] args)
     {
-        //UnboundedGrid ugr=new UnboundedGrid();
+        //UnboundedGrid ugr=new UnboundedGrid()
         ActorWorld world = new ActorWorld(); 
-        /*world.add(new Location(-1,-1),new MazeBug());
-        for(int i=0;i<=40;i++){
-        	for(int j=0;j<=40;j+=40){
-        		world.add(new Location(i,j),new Rock());
-        	}        	
-        }
-        for(int i=0;i<=40;i+=40){
-        	for(int j=0;j<=40;j++){
-        		world.add(new Location(i,j),new Rock());
-        	}        	
+        /*world.add(new Location(-1,-1),new MazeBug())
         }*/
         world.add(new Location(0,0), new MazeBug());
         world.add(new Location(1,1),new Rock());
         world.show();
-        /*ArrayList<Integer> list = new ArrayList<Integer>();
+        /*ArrayList<Integer> list = new ArrayList<Integer>()
         for (int i = 0; i < 10; i++) {
-            list.add((int) (Math.random() * 100));
+            list.add((int) (Math.random() * 100))
         }
         Collections.sort(list);
-        System.out.println(Arrays.toString(list.toArray()));*/
+        System.out.println(Arrays.toString(list.toArray()))*/
     }
 }

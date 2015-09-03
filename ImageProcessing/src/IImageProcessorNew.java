@@ -1,12 +1,7 @@
-import imagereader.*;
-import sun.awt.image.ToolkitImage;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.MemoryImageSource;
-import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -15,40 +10,35 @@ import java.io.IOException;
  * Created by zhoujihao on 15-8-23.
  * Open source,open mind.
  */
-public class IImageProcessor_new implements imagereader.IImageProcessor {
+public class IImageProcessorNew implements imagereader.IImageProcessor {
     // Image Information
     private int width;
     private int height;
-    private int filesize;
-    private int imagesize;
     private int off;
     private int rowByteNum;
 
     private byte[] getImageData(Image img) {
         BufferedImage bfimg = toBufferedImage(img);
-        /*BufferedImage bfimg = (BufferedImage)img;*/
+        /*BufferedImage bfimg = (BufferedImage)img*/
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] data = null;
         try {
             ImageIO.write(bfimg, "bmp", bos);
             data = bos.toByteArray();
         } catch (IOException e) {
-            System.out.println("GetImageData: IO Exception!");
+            /*System.out.println("GetImageData: IO Exception!")*/
         }
         return data;
     }
 
     private void parseImageInformation(byte[] data) {
-        width = (data[18] & 0xff) | ((data[19] & 0xff) << 8)
-                | ((data[20] & 0xff) << 16) | ((data[21] & 0xff) << 24);
-        height = (data[22] & 0xff) | ((data[23] & 0xff) << 8)
-                | ((data[24] & 0xff) << 16) | ((data[25] & 0xff) << 24);
-        filesize = (data[2] & 0xff) | ((data[3] & 0xff) << 8)
-                | ((data[4] & 0xff) << 16) | ((data[5] & 0xff) << 24);
-        imagesize = (data[34] & 0xff) | ((data[35] & 0xff) << 8)
-                | ((data[36] & 0xff) << 16) | ((data[37] & 0xff) << 24);
-        off = (data[10] & 0xff) | ((data[11] & 0xff) << 8)
-                | ((data[12] & 0xff) << 16) | ((data[13] & 0xff) << 24);
+        width = changeInt(data, 21);
+        height = changeInt(data, 25);
+        /*int imagefilesize = (data[2] & 0xff) | ((data[3] & 0xff) << 8)
+                | ((data[4] & 0xff) << 16) | ((data[5] & 0xff) << 24)
+        int imagesize = (data[34] & 0xff) | ((data[35] & 0xff) << 8)
+                | ((data[36] & 0xff) << 16) | ((data[37] & 0xff) << 24)*/
+        off = changeInt(data, 13);
         rowByteNum = width * 3;
         if (rowByteNum % 4 != 0) {
             rowByteNum = (rowByteNum / 4 + 1) * 4;
@@ -60,13 +50,20 @@ public class IImageProcessor_new implements imagereader.IImageProcessor {
         System.out.println("Image Data Offset: " + off)*/
     }
 
+    public int changeInt(byte[] bi,int start){
+        return (((int)bi[start]&0xff)<<24)
+                | (((int)bi[start-1]&0xff)<<16)
+                | (((int)bi[start-2]&0xff)<<8)
+                | (int)bi[start-3]&0xff;
+    }
+
     public BufferedImage createImage(byte[] data) {
         BufferedImage image = null;
         ByteArrayInputStream in = new ByteArrayInputStream(data);
         try {
             image = ImageIO.read(in);
         } catch (IOException e) {
-            System.out.println("CreateImage : IO Exception!");
+            /*System.out.println("CreateImage : IO Exception!")*/
         }
         return image;
     }

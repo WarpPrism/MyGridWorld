@@ -16,16 +16,16 @@ import javax.swing.JOptionPane;
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
 public class MazeBug extends Bug {
-	public Location next;
-	public Location last;
-	public boolean isEnd = false;
-	public Stack<ArrayList<Location>> crossLocation = new Stack<ArrayList<Location>>();
-	public Integer stepCount = 0;
+	private Location next;
+	private Location last;
+	private boolean isEnd = false;
+	private Stack<ArrayList<Location>> crossLocation = new Stack<ArrayList<Location>>();
+	private Integer stepCount = 0;
     //final message has been shown
-	boolean hasShown = false;
+	private boolean hasShown = false;
 
-    boolean returnflag = false;
-    HashMap<Integer, Integer> probability;
+    private boolean returnflag = false;
+    private HashMap<Integer, Integer> probability;
 
 
 	public MazeBug() {
@@ -118,11 +118,12 @@ public class MazeBug extends Bug {
 	 */
 	public void move() {
 		Grid<Actor> gr = getGrid();
-		if (gr == null)
-			return;
+		if (gr == null) {
+            return;
+        }
 		Location loc = getLocation();
         last = loc;
-        DFSGetNext();
+        usingDFSGetNext();
 		if (gr.isValid(next)) {
 			setDirection(getLocation().getDirectionToward(next));
 			moveTo(next);
@@ -134,7 +135,7 @@ public class MazeBug extends Bug {
 	}
 
     // DFS Algorithm to get the next position.
-    public void DFSGetNext() {
+    public void usingDFSGetNext() {
         Location current = this.getLocation();
         // get all null position.
         ArrayList<Location> valid = this.getValid(current);
@@ -144,7 +145,7 @@ public class MazeBug extends Bug {
         stacknode.addAll(valid);
         if (!returnflag) {
             crossLocation.push(stacknode);
-            /*System.out.println(crossLocation);*/
+            /*System.out.println(crossLocation)*/
         }
 
         if (valid.size() == 0) {
@@ -159,14 +160,14 @@ public class MazeBug extends Bug {
                 probability.remove(wrongdir);
                 probability.put(wrongdir, count);
             }
-            // set returnflag as true;
+            // set returnflag as true
             returnflag = true;
 
         } else {
             // Choose a random location from valide location as the next.
             // random Move!!
-            /*int random = 0;
-            random = (int)(Math.random() * valid.size());*/
+            /*int random = 0
+            random = (int)(Math.random() * valid.size())*/
 
             // Probability Move!!
             ArrayList<Integer> dirs = new ArrayList<Integer>();
@@ -184,32 +185,32 @@ public class MazeBug extends Bug {
                     correctdir = (int) dir;
                 }
             }
-            /*Collections.sort(args);
-            int sum = 0;
+            /*Collections.sort(args)
+            int sum = 0
             for (Integer i : args) {
-                sum += i;
+                sum += i
             }
-            int random = (int) (((double)sum) * Math.random());
-            int down = 0;
-            int up = 0;
-            int correctdir = dirs.get(0);
-            int args_choosed = 0;
+            int random = (int) (((double)sum) * Math.random())
+            int down = 0
+            int up = 0
+            int correctdir = dirs.get(0)
+            int args_choosed = 0
             for (int j = 0; j < args.size(); j++) {
-                up = args.get(j) + down;
+                up = args.get(j) + down
                 if (random < up && random >= down) {
-                    args_choosed = up;
-                    break;
+                    args_choosed = up
+                    break
                 } else {
-                	down = up;
+                	down = up
                 }
             }
             Iterator iter = probability.entrySet().iterator();
             while (iter.hasNext()) {
-                Map.Entry entry = (Map.Entry) iter.next();
+                Map.Entry entry = (Map.Entry) iter.next()
                 if (entry.getValue() == args_choosed) {
-                    correctdir = (int) entry.getKey();
+                    correctdir = (int) entry.getKey()
                     if (!dirs.contains(correctdir)) {
-                        correctdir = dirs.get(0);
+                        correctdir = dirs.get(0)
                     }
                 }
             }*/
@@ -220,7 +221,7 @@ public class MazeBug extends Bug {
             next = last.getAdjacentLocation(correctdir);
             // Probability Move!!
 
-            /*next = valid.get(random);*/
+            /*next = valid.get(random)*/
             returnflag = false;
         }
     }

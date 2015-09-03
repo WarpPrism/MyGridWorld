@@ -16,7 +16,7 @@ public class IImageIO implements imagereader.IImageIO {
     public Image myRead(String s) throws IOException {
         Image image = null;
         File srcimg = new File(s);
-        System.out.println("图片加载中: " + srcimg.getName());
+        /*System.out.println("图片加载中: " + srcimg.getName())*/
         try {
 
             // The First Method Using Java API to load the Image
@@ -38,18 +38,18 @@ public class IImageIO implements imagereader.IImageIO {
             dis.read(bi, 0, bilen);
 
             // Get Image Information.
-            int width=ChangeInt(bi,7);
-            System.out.println("像素宽: " + width);
-            int height=ChangeInt(bi,11);
-            System.out.println("像素高: "+height);
-            int nbitcount=(((int)bi[15]&0xff)<<8) | (int)bi[14]&0xff;
-            System.out.println("图像位数: "+nbitcount);
-            int nsizeimage=ChangeInt(bi,23);
-            System.out.println("图像大小: "+nsizeimage);
+            int width=changeInt(bi, 7);
+            /*System.out.println("像素宽: " + width)*/
+            int height=changeInt(bi, 11);
+            /*System.out.println("像素高: "+height)*/
+            /*int nbitcount=(((int)bi[15]&0xff)<<8) | (int)bi[14]&0xff*/
+            /*System.out.println("图像位数: "+nbitcount)*/
+            /*int nsizeimage=changeInt(bi,23)*/
+            /*System.out.println("图像大小: "+nsizeimage)*/
             //判断是否后面有补0 的情况
-            int skip_width = 0;
+            int skipwidth = 0;
             if(!(width * 3 % 4==0)){
-                skip_width = 4 - width * 3 % 4;
+                skipwidth = 4 - width * 3 % 4;
             }
             int[] data = new int[width * height];
             //按行读取
@@ -66,7 +66,7 @@ public class IImageIO implements imagereader.IImageIO {
                             | (blue & 0xff);
                     //跳过补0项
                     if(w == width - 1){
-                        dis.skipBytes(skip_width);
+                        dis.skipBytes(skipwidth);
                     }
                 }
             }
@@ -75,8 +75,7 @@ public class IImageIO implements imagereader.IImageIO {
             image = kit.createImage(new MemoryImageSource(width, height, data, 0, width));
             return image;
         } catch (Exception e) {
-            System.out.println("MyRead() Exception!");
-            e.printStackTrace();
+            /*System.out.println("MyRead() Exception!")*/
         }
         return null;
     }
@@ -92,11 +91,10 @@ public class IImageIO implements imagereader.IImageIO {
         return img;
     }
 
-    public int ChangeInt(byte[] bi,int start){
-        int temp = (((int)bi[start]&0xff)<<24)
+    public int changeInt(byte[] bi,int start){
+        return (((int)bi[start]&0xff)<<24)
                 | (((int)bi[start-1]&0xff)<<16)
                 | (((int)bi[start-2]&0xff)<<8)
                 | (int)bi[start-3]&0xff;
-        return temp;
     }
 }

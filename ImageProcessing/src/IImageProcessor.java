@@ -53,8 +53,8 @@ public class IImageProcessor implements imagereader.IImageProcessor {
                     + (rgb & 0x000000ff) * 0.114);
             return 0xff000000 + (gray << 16) + (gray << 8) + gray;
             /*int gray = (int) (((rgb & 0x00ff0000) >> 16) * 0.299
-                    + ((rgb & 0x0000ff00) >> 8) * 0.587 + (rgb & 0x000000ff) * 0.114);
-            return (rgb & 0xff000000) + (gray << 16) + (gray << 8) + gray;*/
+                    + ((rgb & 0x0000ff00) >> 8) * 0.587 + (rgb & 0x000000ff) * 0.114)
+            return (rgb & 0xff000000) + (gray << 16) + (gray << 8) + gray*/
         }
     }
     @Override
